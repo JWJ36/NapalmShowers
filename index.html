@@ -87,6 +87,7 @@
             align-items: center;
             justify-content: center;
             padding: 1rem;
+            position: relative;
         }
 
         h1 {
@@ -96,6 +97,17 @@
             letter-spacing: 0.03em;
             line-height: 1;
             text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* starfield */
+        #starfield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* footer */
@@ -138,6 +150,7 @@
 
     <!-- hero -->
     <main>
+        <canvas id="starfield"></canvas>
         <h1>NapalmShowers</h1>
     </main>
 
@@ -145,6 +158,57 @@
     <footer>
         napalmshowers
     </footer>
+
+    <!-- starfield script -->
+    <script>
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const stars = Array.from({length: 180}, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            z: Math.random() * canvas.width,
+            size: Math.random() * 3.5 + 1.2
+        }));
+
+        const speed = 2;
+
+        function draw() {
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            ctx.fillStyle = '#0a2e03';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(s => {
+                s.z -= speed;
+                if (s.z <= 0) {
+                    s.x = Math.random() * canvas.width;
+                    s.y = Math.random() * canvas.height;
+                    s.z = canvas.width;
+                }
+                const px = (s.x - cx) * (canvas.width / s.z) + cx;
+                const py = (s.y - cy) * (canvas.width / s.z) + cy;
+                const r = s.size * (1 - s.z / canvas.width);
+                const alpha = 1 - s.z / canvas.width;
+
+                ctx.beginPath();
+                ctx.arc(px, py, r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(206, 100, 100, ${alpha})`;
+                ctx.fill();
+            });
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
 
 </body>
 
