@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NapalmShowers .">
+    <title>NapalmShowers | Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        /* reset */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* colours */
+        :root {
+            --bg: #0a2e03;
+            --accent: #ce6464;
+            --text: #e8e8e8;
+            --text-muted: #ce6464;
+            --border: #10475c;
+        }
+
+        /* body */
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            cursor: crosshair;
+        }
+
+        /* links */
+        a {
+            cursor: crosshair;
+        }
+
+        /* nav */
+        nav {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* main */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1.5rem;
+        }
+
+        /* page header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 15vw, 12rem);
+            color: var(--accent);
+            letter-spacing: 0.03em;
+            line-height: 1;
+            margin: 0.25rem 0;
+            text-align: center;
+        }
+
+        .page-header p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        /* post list */
+        .post-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 700px;
+            gap: 1px;
+        }
+
+        .post-card {
+            background: #0d3804;
+            border: 1px solid var(--border);
+            padding: 1.25rem 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .post-card+.post-card {
+            border-top: none;
+        }
+
+        .post-card:hover {
+            border-color: var(--accent);
+            background: #0f4205;
+        }
+
+        .post-date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.05em;
+        }
+
+        .post-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .post-arrow {
+            float: right;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        /* footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* mobile */
+        @media (max-width: 600px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-links {
+                gap: 0.75rem;
+            }
+
+            .nav-links a {
+                font-size: 0.7rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- nav -->
+    <nav>
+        <a href="index.html" class="site-title">Bingus</a>
+        <ul class="nav-links">
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="breakingnews.html">Breaking News</a></li>
+        </ul>
+    </nav>
+
+    <!-- main -->
+    <main>
+
+        <!-- page header -->
+        <div class="page-header">
+            <p>piss off</p>
+        </div>
+
+        <!-- post list — add a post-card block per post -->
+        <div class="post-list">
+
+            <a class="post-card" href="post1.html">
+                <span class="post-arrow">→</span>
+                <p class="post-date">29/06/2026 — 20:12</p>
+                <p class="post-title">Welcome to jesselovesblogging</p>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- footer -->
+    <footer>
+        napalmshowers
+    </footer>
+
+</body>
+
+</html>
