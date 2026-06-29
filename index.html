@@ -118,6 +118,17 @@
             font-size: 0.7rem;
             color: var(--text-muted);
             letter-spacing: 0.05em;
+            cursor: crosshair;
+        }
+
+        /* boston */
+        #boston {
+            position: fixed;
+            bottom: -300px;
+            left: 0;
+            width: 200px;
+            pointer-events: none;
+            z-index: 100;
         }
 
         /* mobile */
@@ -155,9 +166,12 @@
     </main>
 
     <!-- footer -->
-    <footer>
+    <footer id="footer">
         napalmshowers
     </footer>
+
+    <!-- boston -->
+    <img id="boston" src="bostonterrier.png" alt="boston terrier">
 
     <!-- starfield script -->
     <script>
@@ -208,6 +222,34 @@
         }
 
         draw();
+    </script>
+
+    <!-- boston script -->
+    <script>
+        const boston = document.getElementById('boston');
+        const footer = document.getElementById('footer');
+        let dropTimer = null;
+
+        function showBoston() {
+            if (dropTimer) {
+                clearTimeout(dropTimer);
+                dropTimer = null;
+            }
+
+            const maxLeft = window.innerWidth - 200;
+            const randomLeft = Math.floor(Math.random() * maxLeft);
+            boston.style.left = randomLeft + 'px';
+            boston.style.transition = 'bottom 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+            boston.style.bottom = '0px';
+
+            dropTimer = setTimeout(() => {
+                boston.style.transition = 'bottom 0.2s ease-in';
+                boston.style.bottom = '-300px';
+                dropTimer = null;
+            }, 1500);
+        }
+
+        footer.addEventListener('click', showBoston);
     </script>
 
 </body>
